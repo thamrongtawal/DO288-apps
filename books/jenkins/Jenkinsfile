@@ -105,9 +105,9 @@ pipeline {
 
         stage('Promote to Staging Env') {
             steps {
-//                timeout(time: 60, unit: 'MINUTES') {
-//                    input message: "Promote to Staging?"
-//                }
+                timeout(time: 60, unit: 'MINUTES') {
+                    input message: "Promote to Staging?"
+                }
                 //TODO: Tag the books:latest image stream as books:stage
                 script {
                     openshift.withCluster() {
@@ -151,7 +151,6 @@ openshift.withProject( "${STAGE_PROJECT}" ) {
   }
 }
 
-                    }
 
                         echo "Deployment to Staging env is complete. Access the app at the URL http://${routeHost}."
                     }
